@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "mysite"
+version = "0.1.0"
+description = ""
+authors = ["Nikolai <nicolas.gordienko@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+django = "^4.2.3"
+django-bootstrap4 = "^23.2"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.6"
+dj-database-url = "^2.0.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+django-test = "^0.4030"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

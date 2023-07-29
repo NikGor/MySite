@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1 class="mb-4">Edit Profile</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group mb-4">
+      {{ form.first_name.label(class="form-label") }}
+      {{ form.first_name(class="form-control", size=32) }}
+    </div>
+    <div class="form-group mb-4">
+      {{ form.last_name.label(class="form-label") }}
+      {{ form.last_name(class="form-control", size=32) }}
+    </div>
+    <div class="form-group mb-4">
+      {{ form.job_title.label(class="form-label") }}
+      {{ form.job_title(class="form-control", size=32) }}
+    </div>
+    <div class="form-group mb-4">
+      {{ form.location.label(class="form-label") }}
+      {{ form.location(class="form-control", size=32) }}
+    </div>
+    <div class="form-group mb-4">
+      {{ form.is_relocatable.label(class="form-label") }}
+      {{ form.is_relocatable(class="form-check") }}
+    </div>
+    <div class="form-group mb-4">
+      {{ form.about_me.label(class="form-label") }}
+      {{ form.about_me(class="form-control", cols=32, rows=4) }}
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Save" class="btn btn-primary">
+    </div>
+  </form>
+{% endblock %}

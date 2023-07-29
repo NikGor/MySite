@@ -1,0 +1,27 @@
+<div class="col-8">
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <h2>{{ user.job_title }}</h2>
+</div>
+<div class="col-4">
+    <div>
+        <a href="https://maps.google.com/?q={{ user.location }}" class="link-dark" target="_blank">
+            <span><i class="bi bi-geo-alt-fill"></i></span>
+            <span>{{ user.location }}</span>
+        </a>
+    </div>
+    <div class="mx-2 text-muted">
+        {% if user.is_relocatable %}
+            <span class="ready"><i class="bi bi-check2-circle"></i></span>
+            <span>ready to relocate</span>
+        {% else %}
+            <span class="not-ready"><i class="bi bi-x-circle"></i></span>
+            <span>not ready to relocate</span>
+        {% endif %}
+    </div>
+    <div class="my-2">
+        <a href="mailto:{{ user.email }}" class="link-dark">
+            <span><i class="bi bi-envelope-fill"></i></span>
+            <span>{{ user.email }}</span>
+        </a>
+    </div>
+</div>

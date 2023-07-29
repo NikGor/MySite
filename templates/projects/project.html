@@ -1,0 +1,12 @@
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="https://via.placeholder.com/200" class="card-img-top" alt="Project screenshot">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{{ project.url }}" class="btn btn-primary">Go to project</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
