@@ -1,35 +1,27 @@
-{% extends "base_generic.html" %}
-
-{% block content %}
-  <h1 class="mb-4">Edit Profile</h1>
-  <form method="POST">
-    {{ form.hidden_tag() }}
-    <div class="form-group mb-4">
-      {{ form.first_name.label(class="form-label") }}
-      {{ form.first_name(class="form-control", size=32) }}
+<div class="col-8">
+    <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+    <h2>{{ profile_user.job_title }}</h2>
+</div>
+<div class="col-4">
+    <div>
+        <a href="https://maps.google.com/?q={{ user.location }}" class="link-dark" target="_blank">
+            <span><i class="bi bi-geo-alt-fill"></i></span>
+            <span>{{ profile_user.location }}</span>
+        </a>
     </div>
-    <div class="form-group mb-4">
-      {{ form.last_name.label(class="form-label") }}
-      {{ form.last_name(class="form-control", size=32) }}
+    <div class="mx-2 text-muted">
+        {% if profile_user.is_relocatable %}
+            <span class="ready"><i class="bi bi-check2-circle"></i></span>
+            <span>ready to relocate</span>
+        {% else %}
+            <span class="not-ready"><i class="bi bi-x-circle"></i></span>
+            <span>not ready to relocate</span>
+        {% endif %}
     </div>
-    <div class="form-group mb-4">
-      {{ form.job_title.label(class="form-label") }}
-      {{ form.job_title(class="form-control", size=32) }}
+    <div class="my-2">
+        <a href="mailto:{{ user.email }}" class="link-dark">
+            <span><i class="bi bi-envelope-fill"></i></span>
+            <span>{{ profile_user.email }}</span>
+        </a>
     </div>
-    <div class="form-group mb-4">
-      {{ form.location.label(class="form-label") }}
-      {{ form.location(class="form-control", size=32) }}
-    </div>
-    <div class="form-group mb-4">
-      {{ form.is_relocatable.label(class="form-label") }}
-      {{ form.is_relocatable(class="form-check") }}
-    </div>
-    <div class="form-group mb-4">
-      {{ form.about_me.label(class="form-label") }}
-      {{ form.about_me(class="form-control", cols=32, rows=4) }}
-    </div>
-    <div class="form-group">
-      <input type="submit" value="Save" class="btn btn-primary">
-    </div>
-  </form>
-{% endblock %}
+</div>
