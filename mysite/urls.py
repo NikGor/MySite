@@ -23,4 +23,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('user/', include('user.urls', namespace='user')),
+    path('experience/', include('experience.urls', namespace='experience')),
 ]

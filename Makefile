@@ -16,6 +16,3 @@ amend-and-push:
 	git add .
 	git commit --amend --no-edit
 	git push --force
-
-say-hello:
-	@echo "Hello, World!"

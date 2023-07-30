@@ -1,0 +1,20 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Experience List</h2>
+  <div class="container">
+    {% for experience in experiences %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ experience.job_title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ experience.company }}</h6>
+          <p class="card-text">{{ experience.description }}</p>
+          <p class="card-text"><small class="text-muted">From: {{ experience.start_date }} - To: {{ experience.end_date }}</small></p>
+          <a href="{% url 'experience:experience_edit' experience.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'experience:experience_delete' experience.id %}" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="{% url 'experience:experience_new' %}" class="btn btn-success">Add New Experience</a>
+  </div>
+{% endblock %}

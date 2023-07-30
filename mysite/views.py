@@ -13,7 +13,9 @@ from django.contrib.auth import get_user_model
 class IndexView(View):
     def get(self, request):
         profile_user = get_user_model().objects.first()
-        return render(request, 'index.html', {'profile_user': profile_user})
+        experience = profile_user.experience.all()
+        return render(request, 'index.html', {'profile_user': profile_user,
+                                              'experience': experience})
 
 
 # Create your views here.
@@ -41,4 +43,4 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         messages.success(request, _("Вы разлогинены"))
-        return redirect('login')
+        return redirect('index')
