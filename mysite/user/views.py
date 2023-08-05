@@ -4,13 +4,10 @@ from .models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from .forms import UserUpdateForm
-
-User = get_user_model()
 
 
 class UserView(LoginRequiredMixin, UpdateView):

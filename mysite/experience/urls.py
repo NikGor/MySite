@@ -9,4 +9,3 @@ urlpatterns = [
     path('<int:pk>/edit/', ExperienceUpdateView.as_view(), name='experience_edit'),
     path('<int:pk>/delete/', ExperienceDeleteView.as_view(), name='experience_delete'),
 ]
-
