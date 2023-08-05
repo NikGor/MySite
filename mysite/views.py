@@ -16,10 +16,12 @@ class IndexView(View):
         experiences = profile_user.experience_set.all()
         educations = profile_user.education_set.all()
         skills = profile_user.skill_set.all()
+        projects = profile_user.project_set.all()
         return render(request, 'index.html', {'profile_user': profile_user,
                                               'experiences': experiences,
                                               'educations': educations,
-                                              'skills': skills})
+                                              'skills': skills,
+                                              'projects': projects})
 
 
 # Create your views here.
