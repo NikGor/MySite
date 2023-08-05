@@ -35,7 +35,7 @@ AUTH_USER_MODEL = 'user.User'
 # Application definition
 
 INSTALLED_APPS = [
-    "user",
+    "mysite.user",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "mysite",
-    "experience",
+    "mysite.experience",
 ]
 
 MIDDLEWARE = [

@@ -22,6 +22,6 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('user/', include('user.urls', namespace='user')),
-    path('experience/', include('experience.urls', namespace='experience')),
+    path('user/', include('mysite.user.urls', namespace='user')),
+    path('experience/', include('mysite.experience.urls', namespace='experience')),
 ]
