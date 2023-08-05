@@ -1,0 +1,20 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>education List</h2>
+  <div class="container">
+    {% for education in educations %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ education.school }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ education.faculty }}</h6>
+          <p class="card-text">{{ education.description }}</p>
+          <p class="card-text"><small class="text-muted">From: {{ education.start_date }} - To: {{ education.end_date }}</small></p>
+          <a href="{% url 'education:education_edit' education.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'education:education_delete' education.id %}" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="{% url 'education:education_new' %}" class="btn btn-success">Add New education</a>
+  </div>
+{% endblock %}

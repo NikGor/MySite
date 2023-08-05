@@ -4,16 +4,14 @@
             <div class="col">
                 <h3>{{ education.school }}</h3>
                 <small>
-                    {{ education.faculty }}
-                </small><br>
-                <small>
                     {{ education.start_date }} -
                     {% if education.end_date %}
                         {{ education.end_date }}
                     {% else %}
                         Present
                     {% endif %}
-                </small>
+                </small><br>
+                <small>{{ education.faculty }}</small>
                 <p>{{ education.description }}</p>
             </div>
         </div>

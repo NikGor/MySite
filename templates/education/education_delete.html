@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Delete Education</h2>
+  <p>Are you sure you want to delete "{{ education.school }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'education:education_list' %}" class="btn btn-secondary">No, go back</a>
+  </form>
+{% endblock %}

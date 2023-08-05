@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "mysite",
     "mysite.experience",
+    "mysite.education",
 ]
 
 MIDDLEWARE = [
