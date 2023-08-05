@@ -15,6 +15,7 @@ class ExperienceCreateView(CreateView):
     model = Experience
     form_class = ExperienceForm
     template_name = 'experience/experience_create.html'
+    success_url = reverse_lazy('index')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -24,7 +25,8 @@ class ExperienceCreateView(CreateView):
 class ExperienceUpdateView(UpdateView):
     model = Experience
     form_class = ExperienceForm
-    template_name = 'experience/experience_edit.html'
+    template_name = 'experience/experience_update.html'
+    success_url = reverse_lazy('index')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -34,4 +36,4 @@ class ExperienceUpdateView(UpdateView):
 class ExperienceDeleteView(DeleteView):
     model = Experience
     template_name = 'experience/experience_delete.html'
-    success_url = reverse_lazy('experience_list')
+    success_url = reverse_lazy('index')

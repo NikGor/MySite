@@ -13,9 +13,9 @@ from django.contrib.auth import get_user_model
 class IndexView(View):
     def get(self, request):
         profile_user = get_user_model().objects.first()
-        experience = profile_user.experience.all()
+        experiences = profile_user.experience_set.all()
         return render(request, 'index.html', {'profile_user': profile_user,
-                                              'experience': experience})
+                                              'experiences': experiences})
 
 
 # Create your views here.
