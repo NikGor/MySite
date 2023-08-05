@@ -15,9 +15,11 @@ class IndexView(View):
         profile_user = get_user_model().objects.first()
         experiences = profile_user.experience_set.all()
         educations = profile_user.education_set.all()
+        skills = profile_user.skill_set.all()
         return render(request, 'index.html', {'profile_user': profile_user,
                                               'experiences': experiences,
-                                              'educations': educations})
+                                              'educations': educations,
+                                              'skills': skills})
 
 
 # Create your views here.

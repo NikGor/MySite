@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Skill List</h2>
+  <div class="container">
+    {% for skill in skills %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ skill.skill_type }}</h5>
+          <p class="card-text">{{ skill.description }}</p>
+          <a href="{% url 'skills:skill_edit' skill.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'skills:skill_delete' skill.id %}" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="{% url 'skills:skill_new' %}" class="btn btn-success">Add New Skill</a>
+  </div>
+{% endblock %}
