@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "mysite.experience",
     "mysite.education",
     "mysite.skills",
+    "mysite.projects",
 ]
 
 MIDDLEWARE = [

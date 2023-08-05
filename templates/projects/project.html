@@ -1,11 +1,15 @@
 {% for project in projects %}
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <img src="https://via.placeholder.com/200" class="card-img-top" alt="Project screenshot">
-            <div class="card-body">
-                <h5 class="card-title">{{ project.name }}</h5>
-                <p class="card-text">{{ project.description }}</p>
-                <a href="{{ project.url }}" class="btn btn-primary">Go to project</a>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>{{ project.name }}</h3>
+                <small>
+                    URL: <a href="{{ project.url }}">{{ project.url }}</a>
+                </small><br>
+                {% if project.screenshot_url %}
+                    <img src="{{ project.screenshot_url }}" alt="{{ project.name }} screenshot">
+                {% endif %}
+                <p>{{ project.description }}</p>
             </div>
         </div>
     </div>

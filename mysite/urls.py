@@ -26,4 +26,5 @@ urlpatterns = [
     path('experience/', include('mysite.experience.urls', namespace='experience')),
     path('education/', include('mysite.education.urls', namespace='education')),
     path('skills/', include('mysite.skills.urls', namespace='skills')),
+    path('projects/', include('mysite.projects.urls', namespace='projects')),
 ]
