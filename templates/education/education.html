@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col">
                 <h3>{{ education.school }}</h3>
+                <p>{{ education.faculty }}</p>
                 <small>
                     {{ education.start_date }} -
                     {% if education.end_date %}
@@ -11,8 +12,7 @@
                         Present
                     {% endif %}
                 </small><br>
-                <small>{{ education.faculty }}</small>
-                <p>{{ education.description }}</p>
+                <p class="my-3">{{ education.description|linebreaksbr }}</p>
             </div>
         </div>
     </div>

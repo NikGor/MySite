@@ -29,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['mysite-production-b04c.up.railway.app',
+                 '127.0.0.1']
 AUTH_USER_MODEL = 'user.User'
 
 # Application definition
@@ -78,6 +79,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "mysite.wsgi.application"
+
+CSRF_TRUSTED_ORIGINS = ['https://mysite-production-b04c.up.railway.app']
 
 
 # Database
