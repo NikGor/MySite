@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import IndexView, LoginView, LogoutView
+from mysite.views import IndexView, LoginView, LogoutView, PageNotFoundView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('education/', include('mysite.education.urls', namespace='education')),
     path('skills/', include('mysite.skills.urls', namespace='skills')),
     path('projects/', include('mysite.projects.urls', namespace='projects')),
+    path('404/', PageNotFoundView.as_view(), name='404'),
 ]
