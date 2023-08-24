@@ -50,3 +50,10 @@ class LogoutView(View):
         logout(request)
         messages.success(request, _("Вы разлогинены"))
         return redirect('index')
+
+
+class PageNotFoundView(View):
+    template_name = '404.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, status=404)
