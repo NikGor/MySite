@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikolai Gordienko</title>
+</head>
+<body>
+    <div class="container bg-white">
+        <header class="row">
+            <div class="col-8">
+                <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+                <h2>{{ profile_user.job_title }}</h2>
+            </div>
+            <div class="col-4">
+                <div>
+                    <a href="https://maps.google.com/?q={{ user.location }}" class="link-dark" target="_blank">
+                        <span>Geo</span>
+                        <span>{{ profile_user.location }}</span>
+                    </a>
+                </div>
+                <div class="mx-2 text-muted">
+                    {% if profile_user.is_relocatable %}
+                        <span class="ready">✓</span>
+                        <span>ready to relocate</span>
+                    {% else %}
+                        <span class="not-ready">✕</span>
+                        <span>not ready to relocate</span>
+                    {% endif %}
+                </div>
+                <div class="my-2">
+                    <a href="{{ user.linkedin }}" class="link-dark" target="_blank">
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-3">
+                <img src="static/1690396729047~2.jpg" class="w-100 my-3">
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-cv" role="tabpanel">
+                        <div class="row">
+                            <div class="col">
+                                <h3>About me:</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    {{ profile_user.about_me|linebreaksbr }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Summary:</h3>
+                            </div>
+                        </div>
+                        <h3>Experience:</h3>
+                        <div>
+                            {% include 'experience/experience.html' %}
+                        </div>
+                        <h3>Education:</h3>
+                        <div>
+                            {% include 'education/education.html' %}
+                        </div>
+                        <h3>Skills:</h3>
+                        <div>
+                            {% include 'skills/skills.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

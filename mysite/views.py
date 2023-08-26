@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+from xhtml2pdf import pisa
 
 
 class IndexView(View):
@@ -57,3 +59,30 @@ class PageNotFoundView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, status=404)
+
+
+class ExportPDFView(View):
+    template_name = 'pdf_template.html'
+
+    def get(self, request, *args, **kwargs):
+        profile_user = get_user_model().objects.first()
+        experiences = profile_user.experience_set.all()
+        educations = profile_user.education_set.all()
+        skills = profile_user.skill_set.all()
+        projects = profile_user.project_set.all()
+        context = {'profile_user': profile_user,
+                   'experiences': experiences,
+                   'educations': educations,
+                   'skills': skills,
+                   'projects': projects}
+        html = render(request, self.template_name, context).content
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="NikGor_CV.pdf"'
+
+        # Создание PDF
+        pisa_status = pisa.CreatePDF(html, dest=response)
+
+        if pisa_status.err:
+            return HttpResponse('Ошибка создания PDF', status=500)
+        return response
