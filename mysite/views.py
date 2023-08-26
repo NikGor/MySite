@@ -86,3 +86,18 @@ class ExportPDFView(View):
         if pisa_status.err:
             return HttpResponse('Ошибка создания PDF', status=500)
         return response
+
+
+class PDFview(View):
+    def get(self, request):
+        profile_user = get_user_model().objects.first()
+        experiences = profile_user.experience_set.all()
+        educations = profile_user.education_set.all()
+        skills = profile_user.skill_set.all()
+        projects = profile_user.project_set.all()
+        context = {'profile_user': profile_user,
+                   'experiences': experiences,
+                   'educations': educations,
+                   'skills': skills,
+                   'projects': projects}
+        return render(request, 'pdf_template.html', context)
