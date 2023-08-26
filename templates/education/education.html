@@ -2,17 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>{{ education.school }}</h3>
-                <p>{{ education.faculty }}</p>
-                <small>
-                    {{ education.start_date }} -
+                <h5><strong>{{ education.school }}</strong></h5>
+                <p class="text-dark">
+                    <em><strong>{{ education.faculty }}</strong></em> [{{ education.start_date }} -
                     {% if education.end_date %}
                         {{ education.end_date }}
                     {% else %}
                         Present
-                    {% endif %}
-                </small><br>
-                <p class="my-3">{{ education.description|linebreaksbr }}</p>
+                    {% endif %}]
+                </p>
+                <div class="mt-4">
+                    <p>{{ education.description|linebreaksbr }}</p>
+                </div>
             </div>
         </div>
     </div>

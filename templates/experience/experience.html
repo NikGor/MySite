@@ -2,17 +2,22 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3 class="h3">{{ experience.job_title }}</h3>
-                <p>{{ experience.company }}</p>
-                <small>
-                    {{ experience.start_date }} -
-                    {% if experience.end_date %}
-                        {{ experience.end_date }}
-                    {% else %}
-                        Present
-                    {% endif %}
-                </small>
-                <p class="my-3">{{ experience.description|linebreaksbr }}</p>
+                <h5><strong>{{ experience.job_title }}</strong></h5>
+                    <p class="text-dark">
+                        <em><strong>{{ experience.company }}</strong></em> [{{ experience.start_date }} -
+                        {% if experience.end_date %}
+                            {{ experience.end_date }}
+                        {% else %}
+                            Present
+                        {% endif %}]
+                    </p>
+                <div class="mt-4">
+                    City: {{ experience.city }}<br>
+                    Country: {{ experience.country }}
+                </div>
+                <div class="mt-4">
+                    <p>{{ experience.description|linebreaksbr }}</p>
+                </div>
             </div>
         </div>
     </div>
