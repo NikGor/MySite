@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikolai Gordienko | Python Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 10px;
         }
         header {
             border-bottom: 1px solid #ccc;
@@ -32,10 +33,13 @@
                     <h2>{{ profile_user.job_title }}</h2>
                 </div>
                 <div>
-                    <p>Location: {{ profile_user.location }}</p>
-                    <p>Date of birth: {{ profile_user.birth_date }}</p>
-                    <p>Email: {{ profile_user.email }}</p>
-                    <p>Phone: {{ profile_user.phone_number }}</p>
+                    <span>Location: {{ profile_user.location }}
+                       <br><i class="fas fa-check" style="color: green;"></i>
+                       <span style="font-size: 0.8em; margin-left: 5px;">ready to relocate</span>
+                    </span>
+                    <br><span>Date of birth: {{ profile_user.birth_date }}</span>
+                    <br><span>Email: {{ profile_user.email }}</span>
+                    <br><span>Phone: {{ profile_user.phone_number }}</span>
                 </div>
             </div>
         </header>

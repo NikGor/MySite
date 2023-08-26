@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.template.loader import render_to_string
 from django.views import View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
@@ -8,7 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
-from wkhtmltopdf.views import PDFTemplateResponse
+from django.http import HttpResponse
+from weasyprint import HTML
 
 
 class IndexView(View):
@@ -77,13 +79,14 @@ class ExportPDFView(View):
             'projects': projects
         }
 
-        response = PDFTemplateResponse(
-            request=request,
-            template=self.template_name,
-            filename="NikolaiGordienko_CV.pdf",
-            context=context,
-            cmd_options={'load-error-handling': 'ignore'}
-        )
+        # Render HTML content
+        html_string = render_to_string(self.template_name, context)
+
+        # Convert the HTML string to a PDF using WeasyPrint
+        html = HTML(string=html_string, base_url=request.build_absolute_uri())
+        response = HttpResponse(content_type="application/pdf")
+        response['Content-Disposition'] = 'inline; filename="NikolaiGordienko_CV.pdf"'
+        response.write(html.write_pdf())
 
         return response
 

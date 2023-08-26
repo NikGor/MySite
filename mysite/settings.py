@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'wkhtmltopdf',
     "mysite",
     "mysite.experience",
     "mysite.education",
