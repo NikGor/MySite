@@ -5,14 +5,22 @@
   <div class="container">
     {% for education in educations %}
       <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">{{ education.school }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ education.faculty }}</h6>
-          <p class="card-text">{{ education.description }}</p>
-          <p class="card-text"><small class="text-muted">From: {{ education.start_date }} - To: {{ education.end_date }}</small></p>
-          <a href="{% url 'education:education_edit' education.id %}" class="btn btn-primary">Edit</a>
-          <a href="{% url 'education:education_delete' education.id %}" class="btn btn-danger">Delete</a>
-        </div>
+          <div class="card-body">
+              <h5 class="card-title"><strong>{{ education.school }}</strong></h5>
+              <p class="text-dark"><em><strong>{{ education.faculty }}</strong></em> [{{ education.start_date }} -
+                  {% if education.end_date %}
+                      {{ education.end_date }}
+                  {% else %}
+                      Present
+                  {% endif %}]</p>
+              <div class="mt-3">
+                  <p class="card-text">{{ education.description }}</p>
+              </div>
+              <div class="mt-3">
+                  <a href="{% url 'education:education_edit' education.id %}" class="btn btn-primary">Edit</a>
+                  <a href="{% url 'education:education_delete' education.id %}" class="btn btn-danger">Delete</a>
+              </div>
+          </div>
       </div>
     {% endfor %}
     <a href="{% url 'education:education_new' %}" class="btn btn-success">Add New education</a>
