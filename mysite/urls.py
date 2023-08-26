@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import IndexView, LoginView, LogoutView, PageNotFoundView, ExportPDFView
+from mysite.views import IndexView, LoginView, LogoutView, PageNotFoundView, ExportPDFView, PDFview
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('projects/', include('mysite.projects.urls', namespace='projects')),
     path('404/', PageNotFoundView.as_view(), name='404'),
     path('export2pdf/', ExportPDFView.as_view(), name='export2pdf'),
+    path('pdf/', PDFview.as_view(), name='pdf'),
 ]
