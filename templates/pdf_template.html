@@ -3,67 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikolai Gordienko - Europass CV</title>
+    <title>Nikolai Gordienko | Python Developer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
         header {
-            display: flex;
-            justify-content: space-between;
             border-bottom: 1px solid #ccc;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        img {
-            max-width: 150px;
-            margin-right: 20px;
-        }
-        h3 {
-            margin-top: 20px;
-        }
         section {
             border-bottom: 1px solid #ccc;
+        }
+         .header-content {
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div>
-            <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
-            <h2>{{ profile_user.job_title }}</h2>
-            <a href="https://maps.google.com/?q={{ user.location }}" target="_blank">{{ profile_user.location }}</a>
-            <div>
-                {% if profile_user.is_relocatable %}
-                    ✓ ready to relocate
-                {% else %}
-                    ✕ not ready to relocate
-                {% endif %}
+    <div class="cv-container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+                    <h2>{{ profile_user.job_title }}</h2>
+                </div>
+                <div>
+                    <p>Location: {{ profile_user.location }}</p>
+                    <p>Date of birth: {{ profile_user.birth_date }}</p>
+                    <p>Email: {{ profile_user.email }}</p>
+                    <p>Phone: {{ profile_user.phone_number }}</p>
+                </div>
             </div>
-            <a href="{{ user.linkedin }}" target="_blank">LinkedIn</a>
-        </div>
-        <img src="static/1690396729047~2.jpg" alt="Profile Photo">
-    </header>
-
-    <section>
-        <h3>About me:</h3>
-        <p>{{ profile_user.about_me }}</p>
-    </section>
-
-    <section>
-        <h3>Work Experience:</h3>
-        {% include 'experience/experience.html' %}
-    </section>
-
-    <section>
-        <h3>Education and Training:</h3>
-        {% include 'education/education.html' %}
-    </section>
-
-    <section>
-        <h3>Personal Skills:</h3>
-        {% include 'skills/skills.html' %}
-    </section>
+        </header>
+        <section>
+            <h3>About me:</h3>
+            <p>{{ profile_user.about_me }}</p>
+        </section>
+        <section>
+            <h3>Work Experience:</h3>
+            {% include 'experience/experience.html' %}
+        </section>
+        <section>
+            <h3>Education & Training:</h3>
+            {% include 'education/education.html' %}
+        </section>
+        <section>
+            <h3>Languages & Digital skills:</h3>
+            {% include 'skills/skills.html' %}
+        </section>
+    </div>
 </body>
 </html>

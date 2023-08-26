@@ -6,8 +6,10 @@ from django.db import models
 class User(AbstractUser):
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100, null=True, blank=True)
+    birth_date = models.DateField(blank=True, null=True)
     job_title = models.CharField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     is_relocatable = models.BooleanField(default=False)
     linkedin = models.CharField(max_length=200, null=True, blank=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
     about_me = models.TextField(null=True, blank=True)

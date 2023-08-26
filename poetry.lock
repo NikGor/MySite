@@ -410,6 +410,20 @@ files = [
 ]
 
 [[package]]
+name = "django-wkhtmltopdf"
+version = "3.4.0"
+description = "Converts HTML to PDF using wkhtmltopdf."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-wkhtmltopdf-3.4.0.tar.gz", hash = "sha256:b12222a6c588c645d62d971a2a34e3802ac76023cf94c557068f39f478b2b984"},
+    {file = "django_wkhtmltopdf-3.4.0-py2.py3-none-any.whl", hash = "sha256:c954d016b84b195bb52d8a22a1ed1c5e4eb499c9aa8f6aed89dac57247fc8fc1"},
+]
+
+[package.dependencies]
+six = "*"
+
+[[package]]
 name = "flake8"
 version = "6.1.0"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -819,13 +833,13 @@ testing = ["aiohttp (>=3.8.0,<3.9.0)", "freezegun (>=1.1.0)", "pyhanko-certvalid
 
 [[package]]
 name = "pypdf"
-version = "3.15.2"
+version = "3.15.3"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "pypdf-3.15.2-py3-none-any.whl", hash = "sha256:f6e598292be34187287a609c72815c1502b3dc2c997b374ba0870ce79d2e975a"},
-    {file = "pypdf-3.15.2.tar.gz", hash = "sha256:cdf7d75ebb8901f3352cf9488c5f662c6de9c52e432c429d15cada67ba372fce"},
+    {file = "pypdf-3.15.3-py3-none-any.whl", hash = "sha256:1a8a450f5d165e7a0f6213688cf7c306fde51127b16c807e61165afcef7d9946"},
+    {file = "pypdf-3.15.3.tar.gz", hash = "sha256:4466055bf979686b3328f4776208b264431ae4ef724f18ef832c9795a7bbe945"},
 ]
 
 [package.dependencies]
@@ -1197,6 +1211,16 @@ files = [
 brotli = ["Brotli"]
 
 [[package]]
+name = "wkhtmltopdf"
+version = "0.2"
+description = "Simple python wrapper for wkhtmltopdf"
+optional = false
+python-versions = "*"
+files = [
+    {file = "wkhtmltopdf-0.2.tar.gz", hash = "sha256:530fffb5d1faf4f4cd5248c14fd1b4b7fe311541d0660dc2c2272c32b3c72211"},
+]
+
+[[package]]
 name = "xhtml2pdf"
 version = "0.2.11"
 description = "PDF generator using HTML and CSS"
@@ -1220,4 +1244,4 @@ svglib = ">=1.2.1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "d94ca2240c6fc9c281d58fd48e59511afc1169b8854e18e87c60b4507e7cb401"
+content-hash = "18816ce6e156cff6efc7bbe501dbf9c556f05576b546650383392ef399c886cf"

@@ -8,8 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
-from xhtml2pdf import pisa
+from wkhtmltopdf.views import PDFTemplateResponse
 
 
 class IndexView(View):
@@ -70,21 +69,22 @@ class ExportPDFView(View):
         educations = profile_user.education_set.all()
         skills = profile_user.skill_set.all()
         projects = profile_user.project_set.all()
-        context = {'profile_user': profile_user,
-                   'experiences': experiences,
-                   'educations': educations,
-                   'skills': skills,
-                   'projects': projects}
-        html = render(request, self.template_name, context).content
+        context = {
+            'profile_user': profile_user,
+            'experiences': experiences,
+            'educations': educations,
+            'skills': skills,
+            'projects': projects
+        }
 
-        response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="NikGor_CV.pdf"'
+        response = PDFTemplateResponse(
+            request=request,
+            template=self.template_name,
+            filename="NikolaiGordienko_CV.pdf",
+            context=context,
+            cmd_options={'load-error-handling': 'ignore'}
+        )
 
-        # Создание PDF
-        pisa_status = pisa.CreatePDF(html, dest=response)
-
-        if pisa_status.err:
-            return HttpResponse('Ошибка создания PDF', status=500)
         return response
 
 
