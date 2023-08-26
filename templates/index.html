@@ -1,7 +1,6 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% block content %}
-
     <div class="container bg-white">
         <header class="row">
             {% include 'user/user.html' %}
@@ -9,6 +8,7 @@
         <div class="row">
             <div class="col-3">
                 <img src="{% static '1690396729047~2.jpg' %}" class="w-100 my-3">
+                <a href="{% url 'export2pdf' %}" class="btn btn-primary">Export to PDF</a>
             </div>
             <div class="col-9">
                 <nav class="nav nav-tabs my-3" id="nav-tab" role="tablist">
