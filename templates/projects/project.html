@@ -5,8 +5,8 @@
                 <div class="col">
                     <h4><strong>{{ project.name }}</strong></h4>
                     <p class="text-dark">
-                        <strong>URL:</strong> <a href="{{ project.url }}">{{ project.url }}</a><br>
-                        <strong>GitHub:</strong> <a href="{{ project.github_url }}">{{ project.github_url }}</a>
+                        <strong>URL:</strong> <a href="{{ project.url }}" target="_blank">{{ project.url }}</a><br>
+                        <strong>GitHub:</strong> <a href="{{ project.github_url }}" target="_blank">{{ project.github_url }}</a>
                     </p>
                     <div class="mt-4 text-truncated">
                         <span class="text-short">{{ project.description|truncatechars:150 }}</span>

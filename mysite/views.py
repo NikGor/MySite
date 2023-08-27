@@ -20,7 +20,9 @@ class IndexView(View):
         experiences = profile_user.experience_set.all()
         educations = profile_user.education_set.all()
         skills = profile_user.skill_set.all()
-        projects = profile_user.project_set.all()
+        projects = profile_user.project_set.filter(is_visible=True).order_by('order')
+        print(projects.query)  # Вывод SQL-запроса
+        print(projects)  # Вывод содержимого QuerySet
         return render(request, 'index.html', {'profile_user': profile_user,
                                               'experiences': experiences,
                                               'educations': educations,
