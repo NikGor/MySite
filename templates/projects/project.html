@@ -8,13 +8,6 @@
                         <strong>URL:</strong> <a href="{{ project.url }}">{{ project.url }}</a><br>
                         <strong>GitHub:</strong> <a href="{{ project.github_url }}">{{ project.github_url }}</a>
                     </p>
-
-                    {% if project.screenshot_url %}
-                        <div class="mt-3">
-                            <img src="{{ project.screenshot_url }}" alt="{{ project.name }} screenshot" class="img-fluid">
-                        </div>
-                    {% endif %}
-
                     <div class="mt-4 text-truncated">
                         <span class="text-short">{{ project.description|truncatechars:150 }}</span>
                         <span class="text-full" style="display: none;">{{ project.description }}</span>
