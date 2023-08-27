@@ -11,6 +11,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from weasyprint import HTML
+from mysite.mixins import CustomLoginRequiredMixin
 
 
 class IndexView(View):
@@ -91,7 +92,7 @@ class ExportPDFView(View):
         return response
 
 
-class PDFview(View):
+class PDFview(CustomLoginRequiredMixin, View):
     def get(self, request):
         profile_user = get_user_model().objects.first()
         experiences = profile_user.experience_set.all()

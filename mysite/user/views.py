@@ -4,13 +4,13 @@ from .models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from .forms import UserUpdateForm
+from ..mixins import CustomLoginRequiredMixin
 
 
-class UserView(LoginRequiredMixin, UpdateView):
+class UserView(UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'user/user_profile.html'
@@ -20,7 +20,7 @@ class UserView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-class UpdateUserView(LoginRequiredMixin, FormView):
+class UpdateUserView(CustomLoginRequiredMixin, FormView):
     form_class = UserUpdateForm
     template_name = 'user/user_profile.html'
     success_url = reverse_lazy('user:user')
