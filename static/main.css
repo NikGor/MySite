@@ -1,9 +1,27 @@
 .ready {
     color: green;
 }
+
 .not-ready {
     color: red;
 }
+
 .accordion-body {
     transition: height 1,5s ease-in-out;
+}
+
+.card-hover:hover {
+    background-color: #f1f1f1;
+}
+
+.card img {
+    z-index: 1;
+    position: relative;
+}
+
+.card img:hover {
+    transform: scale(2);
+    transition: transform 0.7s ease;
+    z-index: 100;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
