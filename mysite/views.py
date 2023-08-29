@@ -1,61 +1,26 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.views import View
-from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from weasyprint import HTML
-from mysite.mixins import CustomLoginRequiredMixin
 
 
 class IndexView(View):
     def get(self, request):
-        profile_user = get_user_model().objects.first()
-        experiences = profile_user.experience_set.all()
-        educations = profile_user.education_set.all()
-        skills = profile_user.skill_set.all()
-        projects = profile_user.project_set.filter(is_visible=True).order_by('order')
+        user = get_user_model().objects.first()
+        experiences = user.experience_set.all()
+        educations = user.education_set.all()
+        skills = user.skill_set.all()
+        projects = user.project_set.filter(is_visible=True).order_by('order')
         print(projects.query)  # Вывод SQL-запроса
         print(projects)  # Вывод содержимого QuerySet
-        return render(request, 'index.html', {'profile_user': profile_user,
+        return render(request, 'index.html', {'user': user,
                                               'experiences': experiences,
                                               'educations': educations,
                                               'skills': skills,
                                               'projects': projects})
-
-
-# Create your views here.
-class LoginView(FormView):
-    form_class = AuthenticationForm
-    template_name = 'user/login.html'
-    success_url = reverse_lazy('index')
-
-    def form_valid(self, form):
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(self.request, user)
-                messages.info(self.request, _("Вы залогинены"))
-            else:
-                messages.error(self.request, _("Этот аккаунт отключен."))
-        else:
-            messages.error(self.request, _("Неверное имя пользователя или пароль."))
-        return super().form_valid(form)
-
-
-class LogoutView(View):
-    def get(self, request):
-        logout(request)
-        messages.success(request, _("Вы разлогинены"))
-        return redirect('index')
 
 
 class PageNotFoundView(View):
@@ -69,13 +34,13 @@ class ExportPDFView(View):
     template_name = 'pdf_template.html'
 
     def get(self, request, *args, **kwargs):
-        profile_user = get_user_model().objects.first()
-        experiences = profile_user.experience_set.all()
-        educations = profile_user.education_set.all()
-        skills = profile_user.skill_set.all()
-        projects = profile_user.project_set.all()
+        user = get_user_model().objects.first()
+        experiences = user.experience_set.all()
+        educations = user.education_set.all()
+        skills = user.skill_set.all()
+        projects = user.project_set.all()
         context = {
-            'profile_user': profile_user,
+            'user': user,
             'experiences': experiences,
             'educations': educations,
             'skills': skills,
@@ -94,14 +59,14 @@ class ExportPDFView(View):
         return response
 
 
-class PDFview(CustomLoginRequiredMixin, View):
+class PDFview(LoginRequiredMixin, View):
     def get(self, request):
-        profile_user = get_user_model().objects.first()
-        experiences = profile_user.experience_set.all()
-        educations = profile_user.education_set.all()
-        skills = profile_user.skill_set.all()
-        projects = profile_user.project_set.all()
-        context = {'profile_user': profile_user,
+        user = get_user_model().objects.first()
+        experiences = user.experience_set.all()
+        educations = user.education_set.all()
+        skills = user.skill_set.all()
+        projects = user.project_set.all()
+        context = {'user': user,
                    'experiences': experiences,
                    'educations': educations,
                    'skills': skills,

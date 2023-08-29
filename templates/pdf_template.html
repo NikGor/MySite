@@ -29,23 +29,23 @@
         <header>
             <div class="header-content">
                 <div>
-                    <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
-                    <h2>{{ profile_user.job_title }}</h2>
+                    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                    <h2>{{ user.job_title }}</h2>
                 </div>
                 <div>
-                    <span>Location: {{ profile_user.location }}
+                    <span>Location: {{ user.location }}
                        <br><i class="fas fa-check" style="color: green;"></i>
                        <span style="font-size: 0.8em; margin-left: 5px;">ready to relocate</span>
                     </span>
-                    <br><span>Date of birth: {{ profile_user.birth_date }}</span>
-                    <br><span>Email: {{ profile_user.email }}</span>
-                    <br><span>Phone: {{ profile_user.phone_number }}</span>
+                    <br><span>Date of birth: {{ user.birth_date }}</span>
+                    <br><span>Email: {{ user.email }}</span>
+                    <br><span>Phone: {{ user.phone_number }}</span>
                 </div>
             </div>
         </header>
         <section>
             <h3>About me:</h3>
-            <p>{{ profile_user.about_me }}</p>
+            <p>{{ user.about_me }}</p>
         </section>
         <section>
             <h3>Work Experience:</h3>

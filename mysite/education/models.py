@@ -1,5 +1,5 @@
 from django.db import models
-from mysite.user.forms import User
+from mysite.user.models import User
 
 
 class Education(models.Model):
