@@ -1,8 +1,8 @@
 import os
 from django.contrib import admin
-from django.contrib.sites import requests
 from django.utils.html import format_html
 from .models import Project
+import requests
 
 
 def create_screenshot(modeladmin, request, queryset):

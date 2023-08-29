@@ -14,13 +14,15 @@ class IndexView(View):
         educations = user.education_set.all()
         skills = user.skill_set.all()
         projects = user.project_set.filter(is_visible=True).order_by('order')
+        open_source_projects = user.opensourceproject_set.all()
         print(projects.query)  # Вывод SQL-запроса
         print(projects)  # Вывод содержимого QuerySet
         return render(request, 'index.html', {'user': user,
                                               'experiences': experiences,
                                               'educations': educations,
                                               'skills': skills,
-                                              'projects': projects})
+                                              'projects': projects,
+                                              'open_source_projects': open_source_projects})
 
 
 class PageNotFoundView(View):
@@ -66,9 +68,11 @@ class PDFview(LoginRequiredMixin, View):
         educations = user.education_set.all()
         skills = user.skill_set.all()
         projects = user.project_set.all()
+        open_source_projects = user.open_source_set.all()
         context = {'user': user,
                    'experiences': experiences,
                    'educations': educations,
                    'skills': skills,
-                   'projects': projects}
+                   'projects': projects,
+                   'open_source_projects': open_source_projects}
         return render(request, 'pdf_template.html', context)

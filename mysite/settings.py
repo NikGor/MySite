@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "mysite.education",
     "mysite.skills",
     "mysite.projects",
+    'mysite.open_source',
 ]
 
 MIDDLEWARE = [
