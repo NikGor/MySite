@@ -9,7 +9,7 @@ class Project(models.Model):
     github_url = models.URLField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
     description = models.TextField()
-    screenshot_url = models.TextField(null=True, blank=True)
+    screenshot_url = models.URLField(null=True, blank=True)
     is_visible = models.BooleanField(default=True)
 
     class Meta:

@@ -1,3 +1,4 @@
+{% load static %}
 {% for project in projects %}
     <div class="col-12 col-md-6 mb-4">
         <div class="container">
@@ -8,6 +9,7 @@
                         <strong>URL:</strong> <a href="{{ project.url }}" target="_blank">{{ project.url }}</a><br>
                         <strong>GitHub:</strong> <a href="{{ project.github_url }}" target="_blank">{{ project.github_url }}</a>
                     </p>
+                    <img src="{% static project.screenshot_url %}" alt="Screenshot" width="100">
                     <div class="mt-4 text-truncated">
                         <span class="text-short">{{ project.description|truncatechars:150 }}</span>
                         <span class="text-full" style="display: none;">{{ project.description }}</span>

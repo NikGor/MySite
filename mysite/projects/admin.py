@@ -5,11 +5,11 @@ from .models import Project
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'order', 'is_visible', 'github_link', 'project_link', 'screenshot_url')
+    list_display = ('name', 'order', 'is_visible', 'github_link', 'project_link', 'screenshot_link')
     list_filter = ('is_visible',)
     search_fields = ('name', 'description')
     ordering = ('order',)
-    list_editable = ('order', 'is_visible', 'screenshot_url')
+    list_editable = ('order', 'is_visible')
 
     def github_link(self, obj):
         if obj.github_url:
@@ -21,6 +21,11 @@ class ProjectAdmin(admin.ModelAdmin):
     def project_link(self, obj):
         if obj.url:
             return format_html('<a href="{}" target="_blank">Project</a>', obj.url)
+        return "N/A"
+
+    def screenshot_link(self, obj):
+        if obj.screenshot_url:
+            return format_html('<a href="{}" target="_blank">Screenshot</a>', obj.screenshot_url)
         return "N/A"
 
     project_link.short_description = 'Project URL'
