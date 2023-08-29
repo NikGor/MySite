@@ -33,7 +33,7 @@ class PageNotFoundView(View):
 
 
 class ExportPDFView(View):
-    template_name = 'pdf_template.html'
+    template_name = 'pdf/pdf_template.html'
 
     def get(self, request, *args, **kwargs):
         user = get_user_model().objects.first()
@@ -41,12 +41,14 @@ class ExportPDFView(View):
         educations = user.education_set.all()
         skills = user.skill_set.all()
         projects = user.project_set.all()
+        open_source_projects = user.opensourceproject_set.all()
         context = {
             'user': user,
             'experiences': experiences,
             'educations': educations,
             'skills': skills,
-            'projects': projects
+            'projects': projects,
+            'open_source_projects': open_source_projects
         }
 
         # Render HTML content
@@ -68,11 +70,11 @@ class PDFview(LoginRequiredMixin, View):
         educations = user.education_set.all()
         skills = user.skill_set.all()
         projects = user.project_set.all()
-        open_source_projects = user.open_source_set.all()
+        open_source_projects = user.opensourceproject_set.all()
         context = {'user': user,
                    'experiences': experiences,
                    'educations': educations,
                    'skills': skills,
                    'projects': projects,
                    'open_source_projects': open_source_projects}
-        return render(request, 'pdf_template.html', context)
+        return render(request, 'pdf/pdf_template.html', context)
