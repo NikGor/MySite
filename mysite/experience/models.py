@@ -15,3 +15,6 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.job_title
+
+    class Meta:
+        ordering = ['id']
