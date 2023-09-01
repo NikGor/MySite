@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "mysite.skills",
     "mysite.projects",
     'mysite.open_source',
+    'mysite.job_application',
 ]
 
 MIDDLEWARE = [
