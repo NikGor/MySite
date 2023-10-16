@@ -6,8 +6,8 @@
             <div class="card card-hover border-0 p-3 h-100">
                 <h4><strong>{{ project.name }}</strong></h4>
                 <p class="text-dark">
-                    <strong>URL:</strong> Visit the <a href="{{ project.url }}" target="_blank">Project Website</a><br>
-                    <strong>GitHub:</strong> Visit the <a href="{{ project.github_url }}" target="_blank">Project on GitHub</a>
+                    <strong>URL: </strong><a href="{{ project.url }}" target="_blank">Project Website</a><br>
+                    <strong>GitHub: </strong><a href="{{ project.github_url }}" target="_blank">Project on GitHub</a>
                 </p>
                 <img id="card-img" src="{% static project.screenshot_url %}" alt="Screenshot" class="w-100">
                 <div class="mt-4 text-truncated">

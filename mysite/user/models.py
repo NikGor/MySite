@@ -12,4 +12,5 @@ class User(AbstractUser):
     is_relocatable = models.BooleanField(default=False)
     linkedin = models.CharField(max_length=200, null=True, blank=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
+    website = models.CharField(max_length=200, null=True, blank=True)
     about_me = models.TextField(null=True, blank=True)
