@@ -19,7 +19,8 @@ def create_screenshot(modeladmin, request, queryset):
             api_url = "https://api.apiflash.com/v1/urltoimage"
             params = {
                 "access_key": "d1753a1756d346b690a66246fee2d66c",
-                "url": url_to_capture
+                "url": url_to_capture,
+                "accept-language": "en"
             }
             response = requests.get(api_url, params=params)
             if response.status_code == 200:

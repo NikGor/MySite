@@ -10,8 +10,8 @@ from weasyprint import HTML
 class IndexView(View):
     def get(self, request):
         user = get_user_model().objects.first()
-        experiences = user.experience_set.all()
-        educations = user.education_set.all()
+        experiences = user.experience_set.all().order_by('order')
+        educations = user.education_set.all().order_by('order')
         skills = user.skill_set.all()
         projects = user.project_set.filter(is_visible=True).order_by('order')
         open_source_projects = user.opensourceproject_set.all()
@@ -37,10 +37,10 @@ class ExportPDFView(View):
 
     def get(self, request, *args, **kwargs):
         user = get_user_model().objects.first()
-        experiences = user.experience_set.all()
-        educations = user.education_set.all()
+        experiences = user.experience_set.all().order_by('order')
+        educations = user.education_set.all().order_by('order')
         skills = user.skill_set.all()
-        projects = user.project_set.all()
+        projects = user.project_set.all().order_by('order')
         open_source_projects = user.opensourceproject_set.all()
         context = {
             'user': user,

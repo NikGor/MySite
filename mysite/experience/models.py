@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 
 class Experience(models.Model):
+    order = models.IntegerField(default=0)  # Добавлено для сортировки
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     job_title = models.CharField(max_length=100)
     company = models.CharField(max_length=100)

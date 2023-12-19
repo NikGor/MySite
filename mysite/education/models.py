@@ -3,6 +3,7 @@ from mysite.user.models import User
 
 
 class Education(models.Model):
+    order = models.IntegerField(default=0)  # Добавлено для сортировки
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=100)
     faculty = models.CharField(max_length=100)

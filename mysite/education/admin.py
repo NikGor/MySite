@@ -4,13 +4,13 @@ from .models import Education
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ('school', 'faculty', 'url', 'start_date', 'end_date')
-    list_editable = ('start_date', 'end_date', 'url')
+    list_display = ('school', 'order', 'faculty', 'url', 'start_date', 'end_date')
+    list_editable = ('order', 'start_date', 'end_date', 'url')
     search_fields = ('school', 'faculty')
     ordering = ('-start_date',)
 
     fieldsets = (
         (None, {'fields': ('user',)}),
-        ('Education Information', {'fields': ('school', 'faculty', 'url', 'description')}),
+        ('Education Information', {'fields': ('school', 'faculty', 'url', 'description', 'order')}),
         ('Date', {'fields': ('start_date', 'end_date')}),
     )
