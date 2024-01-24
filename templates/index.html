@@ -6,7 +6,7 @@
             {% include 'user/user.html' %}
         </header>
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 d-none d-md-block">
                 <img src="{% static '1690396729047~2.jpg' %}" class="w-100 my-3">
                 <a href="{% url 'export2pdf' %}" class="link-dark" target="_blank">
                     <i class="bi bi-file-earmark-pdf-fill"></i> Export CV to PDF
@@ -31,10 +31,14 @@
                         <div class="row">
                             <div class="col card-hover pt-1">
                                 <p class="mx-3">
-                                    {{ user.about_me|linebreaksbr }}
+                                    {{ user.about_me|safe }}
                                 </p>
                             </div>
                         </div>
+                        <img src="{% static 'NikGorCertificate.png' %}"
+                             class="my-3"
+                             alt="NikGor_certificate"
+                             height="300px">
                         <div class="row">
                             <div class="col">
                                 <h4><strong>Summary:</strong></h4>

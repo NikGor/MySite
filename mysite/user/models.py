@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -13,4 +14,4 @@ class User(AbstractUser):
     linkedin = models.CharField(max_length=200, null=True, blank=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     website = models.CharField(max_length=200, null=True, blank=True)
-    about_me = models.TextField(null=True, blank=True)
+    about_me = RichTextField(blank=True, null=True)

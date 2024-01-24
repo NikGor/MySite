@@ -55,10 +55,11 @@ class ExportPDFView(View):
         html_string = render_to_string(self.template_name, context)
 
         # Convert the HTML string to a PDF using WeasyPrint
-        html = HTML(string=html_string, base_url=request.build_absolute_uri())
-        response = HttpResponse(content_type="application/pdf")
+        pdf = HTML(string=html_string).write_pdf()
+
+        # Create a HttpResponse object with the PDF and correct MIME type
+        response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'inline; filename="NikolaiGordienko_CV.pdf"'
-        response.write(html.write_pdf())
 
         return response
 

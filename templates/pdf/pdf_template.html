@@ -5,42 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikolai Gordienko | Python Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            font-weight: lighter;
-            margin: 10px;
-        }
-        h1 {
-            font-size: 1.5em;  /* Увеличивает базовый шрифт в 1.5 раза */
-        }
-        h2 {
-            font-size: 1.4em;
-        }
-        h3 {
-            font-size: 1.3em;
-        }
-        h4 {
-            font-size: 1.2em;
-        }
-        h5 {
-            font-size: 1.1em;
-        }
-        header {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        section {
-            border-bottom: 1px solid #ccc;
-        }
-         .header-content {
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
 </head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        font-size: 10px;
+        font-weight: lighter;
+        margin: 0;
+        padding: 10px;
+        background-color: #f7f7f7;
+    }
+
+    @page {
+      margin: 0; /* Задает одинаковые поля со всех сторон */
+    }
+
+    .cv-container {
+        max-width: 800px;
+        margin: auto;
+        background-color: #fff;
+        padding: 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    header, section {
+        margin-bottom: 15px;
+    }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+    }
+    h1, h2, h3 {
+        font-weight: bold;
+        margin: 0;
+        padding: 10px 0;
+    }
+    h1 {
+        font-size: 2em;
+        color: #007bff;
+    }
+    h2 {
+        font-size: 1.5em;
+        color: #333;
+    }
+    h3 {
+        font-size: 1.3em;
+        color: #333;
+    }
+    .contact-info {
+        text-align: right;
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .contact-info i {
+        color: #007bff;
+    }
+    .fa-check {
+        color: #28a745;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .contact-info {
+            align-items: flex-end;
+            text-align: left;
+        }
+    }
+    .work-experience {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        column-count: 2;
+        column-gap: 20px; /* Регулирует промежуток между колонками */
+    }
+    .education {
+        column-count: 2;
+        column-gap: 20px; /* Регулирует промежуток между колонками */
+    }
+    .skills {
+        column-count: 2;
+        column-gap: 20px; /* Регулирует промежуток между колонками */
+    }
+    .new-page {
+        page-break-before: always;
+        margin-top: 10px;
+        padding-top: 50px;
+    }
+
+</style>
 <body>
     <div class="cv-container">
         <header>
@@ -49,37 +110,35 @@
                     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
                     <h2>{{ user.job_title }}</h2>
                 </div>
-                <div>
-                    <span>Location: {{ user.location }}
-                       <br><i class="fas fa-check" style="color: green;"></i>
-                       <span style="font-size: 0.8em; margin-left: 5px;">ready to relocate</span>
-                    </span>
-                    <br><span>Date of birth: {{ user.birth_date }}</span>
-                    <br><span>Email: {{ user.email }}</span>
-                    <br><span>Phone: {{ user.phone_number }}</span>
-                     <br><span>Website: <a href="{{ user.website }}">{{ user.website }}</a></span>
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i> {{ user.location }}</div>
+                    <div><i class="fas fa-check"></i> Ready to relocate</div>
+                    <div><i class="fas fa-birthday-cake"></i> {{ user.birth_date }}</div>
+                    <div><i class="fas fa-envelope"></i> {{ user.email }}</div>
+                    <div><i class="fas fa-phone"></i> {{ user.phone_number }}</div>
+                    <div><i class="fas fa-globe"></i> <a href="{{ user.website }}">{{ user.website }}</a></div>
                 </div>
             </div>
         </header>
+        <h3>About me:</h3>
+        <hr>
         <section>
-            <h3>About me:</h3>
-            <p>{{ user.about_me }}</p>
+            <p>{{ user.about_me|safe }}</p>
         </section>
-        <section class="columns-2">
-            <h3>Work Experience:</h3>
-            {% include 'experience/experience.html' %}
+        <h3>Work Experience:</h3>
+        <hr>
+        <section class="work-experience">
+            {% include 'pdf/experience.html' %}
         </section>
-        <section>
-            <h3>Open Source Projects:</h3>
-            {% include 'open_source/open_source.html' %}
+        <h3 class="new-page ">Education & Training:</h3>
+        <hr>
+        <section class="education">
+            {% include 'pdf/education.html' %}
         </section>
-        <section>
-            <h3>Education & Training:</h3>
-            {% include 'education/education.html' %}
-        </section>
-        <section>
-            <h3>Languages & Digital skills:</h3>
-            {% include 'skills/skills.html' %}
+        <h3>Languages & Digital skills:</h3>
+        <hr>
+        <section class="skills">
+            {% include 'pdf/skills.html' %}
         </section>
     </div>
 </body>

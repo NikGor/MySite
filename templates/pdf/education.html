@@ -1,0 +1,17 @@
+{% for education in educations %}
+  <div>
+    <h4>{{ education.school }}</h4>
+    <p>
+      <strong>{{ education.faculty }}</strong> [{{ education.start_date }} -
+      {% if education.end_date %}
+        {{ education.end_date }}
+      {% else %}
+        Present
+      {% endif %}]
+    </p>
+    {% if education.url %}
+      <a href="{{ education.url }}">Website</a>
+    {% endif %}
+    <p>{{ education.description|linebreaksbr }}</p>
+  </div>
+{% endfor %}

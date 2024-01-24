@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from mysite.views import IndexView, PageNotFoundView, ExportPDFView, PDFview
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +25,8 @@ urlpatterns = [
     path('404/', PageNotFoundView.as_view(), name='404'),
     path('export2pdf/', ExportPDFView.as_view(), name='export2pdf'),
     path('pdf/', PDFview.as_view(), name='pdf'),
+    path("", include("cms.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,17 @@
+{% for experience in experiences %}
+  <div>
+    <h4>{{ experience.job_title }}</h4>
+    <p>
+      <strong>{{ experience.company }}</strong> [{{ experience.start_date }} -
+      {% if experience.end_date %}
+        {{ experience.end_date }}
+      {% else %}
+        Present
+      {% endif %}]
+    </p>
+    {% if experience.url %}
+      <a href="{{ experience.url }}">{{ experience.url }}</a>
+    {% endif %}
+    <p>{{ experience.description|linebreaksbr }}</p>
+  </div>
+{% endfor %}
