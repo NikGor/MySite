@@ -32,6 +32,9 @@ djangocms-snippet = "^3.1.1"
 djangocms-style = "^3.1.0"
 django-ckeditor = "^6.7.0"
 pdfkit = "^1.0.0"
+drf-yasg = "^1.21.7"
+djangorestframework = "^3.14.0"
+readability-lxml = "^0.8.1"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"

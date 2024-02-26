@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     "sekizai",
     'easy_thumbnails',
     'ckeditor',
+    'drf_yasg',
+    'rest_framework',
+    'corsheaders',
     "djangocms_frontend",
     "djangocms_frontend.contrib.accordion",
     "djangocms_frontend.contrib.alert",
@@ -94,6 +97,7 @@ MIDDLEWARE = [
     "cms.middleware.page.CurrentPageMiddleware",
     "cms.middleware.toolbar.ToolbarMiddleware",
     "cms.middleware.language.LanguageCookieMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -150,8 +154,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGES = [
     ("en", "English"),
     ("de", "German"),
-    ("ru", "Russian"),
 ]
+
 LANGUAGE_CODE = "en"
 
 TIME_ZONE = "UTC"
@@ -160,9 +164,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+# LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = 'index'
+# LOGOUT_REDIRECT_URL = 'index'
 
 
 # Static files (CSS, JavaScript, Images)
