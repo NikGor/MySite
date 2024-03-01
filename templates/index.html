@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% block content %}
+{% load i18n %}
     <div class="container bg-white p-3">
         <header class="row">
             {% include 'user/user.html' %}
@@ -25,7 +26,7 @@
                     <div class="tab-pane fade show active" id="nav-cv" role="tabpanel">
                         <div class="row">
                             <div class="col">
-                                <h4><strong>About me:</strong></h4>
+                                <h4><strong>{% trans "About me:" %}</strong></h4>
                             </div>
                         </div>
                         <div class="row">
@@ -41,7 +42,7 @@
                              height="300px">
                         <div class="row">
                             <div class="col">
-                                <h4><strong>Summary:</strong></h4>
+                                <h4><strong>{% trans "Summary:" %}</strong></h4>
                             </div>
                         </div>
                         <div class="accordion accordion-flush" id="accordionFlush">
@@ -50,7 +51,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseOne" aria-expanded="false"
                                             aria-controls="flush-collapseOne">
-                                        Work experience
+                                        {% trans "Work experience" %}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse show"
@@ -66,7 +67,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseFour" aria-expanded="false"
                                             aria-controls="flush-collapseFour">
-                                        Open Source Projects
+                                        {% trans "Open Source Projects" %}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseFour" class="accordion-collapse collapse show"
@@ -82,7 +83,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseTwo" aria-expanded="false"
                                             aria-controls="flush-collapseTwo">
-                                        Education & Training
+                                        {% trans "Education & Training" %}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse show"
@@ -98,7 +99,7 @@
                                             data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                                             aria-controls="flush-collapseThree">
-                                        Languages & Digital Skills
+                                        {% trans "Languages & Digital Skills" %}
                                     </button>
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse show"

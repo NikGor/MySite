@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -120,22 +122,22 @@
                 </div>
             </div>
         </header>
-        <h3>About me:</h3>
+        <h3>{% trans "About me:" %}</h3>
         <hr>
         <section>
             <p>{{ user.about_me|safe }}</p>
         </section>
-        <h3>Work Experience:</h3>
+        <h3>{% trans "Work Experience:" %}</h3>
         <hr>
         <section class="work-experience">
             {% include 'pdf/experience.html' %}
         </section>
-        <h3 class="new-page ">Education & Training:</h3>
+        <h3 class="new-page">{% trans "Education & Training:" %}</h3>
         <hr>
         <section class="education">
             {% include 'pdf/education.html' %}
         </section>
-        <h3>Languages & Digital skills:</h3>
+        <h3>{% trans "Languages & Digital skills:" %}</h3>
         <hr>
         <section class="skills">
             {% include 'pdf/skills.html' %}

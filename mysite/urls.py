@@ -21,6 +21,15 @@ from mysite.views import IndexView, PageNotFoundView, ExportPDFView, PDFview
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.permissions import AllowAny
+from django.utils.translation import override
+
+
+def force_german(view_func):
+    def _wrapped_view_func(request, *args, **kwargs):
+        with override('de'):
+            return view_func(request, *args, **kwargs)
+    return _wrapped_view_func
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -41,7 +50,8 @@ urlpatterns = [
     path('pdf/', PDFview.as_view(), name='pdf'),
     path("api/", include("mysite.job_application.urls")),
     path("docs/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
-    path("", include("cms.urls")),
+    path('export2pdf/de/', force_german(ExportPDFView.as_view()), name='export2pdf'),
+    path('pdf/de/', force_german(PDFview.as_view()), name='pdf'),
 ]
 
 if settings.DEBUG:

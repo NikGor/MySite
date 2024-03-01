@@ -2,10 +2,20 @@
 <html>
 <head>
   <title>URL Parser</title>
+  <!-- Подключение минифицированной CSS Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>URL Parser</h1>
-  <button id="parse-btn">Parse Current Page</button>
+  <div class="container">
+    <h1 class="mt-5">URL Parser</h1>
+    <!-- Использование Bootstrap кнопки -->
+    <button id="parse-btn" class="btn btn-primary mt-3">Parse Current Page</button>
+  </div>
+
   <script src="popup.js"></script>
+  <!-- Подключение зависимостей Bootstrap JS, Popper.js, и jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
