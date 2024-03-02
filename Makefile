@@ -25,9 +25,7 @@ check:
 	poetry run python manage.py check
 
 dumpdata:
-	@mkdir -p dumps
-	@python manage.py close_old_connections
-	@python manage.py dumpdata --indent 2 > dumps/content_dump_$(shell date +%d%m%Y).json
+	@python manage.py dumpdata user experience education skills projects open_source job_application --indent 2 > dumps/content_dump_$(shell date +%d%m%Y).json
 
 loaddata:
 	@python manage.py loaddata content_dump.json

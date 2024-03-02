@@ -1,9 +1,14 @@
 import os
 import requests
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.utils.translation import override
 from openai import OpenAI
 from modeltranslation.translator import translator
 from django.conf import settings
 from django.db.models.fields import CharField, TextField
+from weasyprint import HTML
+from django.contrib.auth import get_user_model
 
 
 def translate_model(modeladmin, request, queryset):
@@ -60,3 +65,43 @@ def create_screenshot(modeladmin, request, queryset):
                     f.write(response.content)
                 project.screenshot_url = f'/screenshots/{screenshot_filename}'
                 project.save()
+
+
+def export_cover_letter(modeladmin, request, queryset):
+    job_application = queryset.first()
+    response = HttpResponse(job_application.cover_letter, content_type='text/plain')
+    file_name = f"{os.getenv('MY_NAME')}_{job_application.company_name}_cover_letter.txt"
+    response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+    return response
+
+
+def export_cv(modeladmin, request, queryset):
+    for job_application in queryset:
+        # Предположим, что в вашей модели language хранится код языка, например 'en' или 'de'
+        language = job_application.language
+
+        with override(language):
+            user = get_user_model().objects.first()
+            experiences = user.experience_set.all().order_by('order')
+            educations = user.education_set.all().order_by('order')
+            skills = user.skill_set.all()
+            projects = user.project_set.all().order_by('order')
+            open_source_projects = user.opensourceproject_set.all()
+            context = {
+                'user': user,
+                'experiences': experiences,
+                'educations': educations,
+                'skills': skills,
+                'projects': projects,
+                'open_source_projects': open_source_projects,
+                'about_me': job_application.cv_intro,
+            }
+
+            html_string = render_to_string('pdf/pdf_template_custom.html', context)
+            pdf = HTML(string=html_string).write_pdf()
+
+            response = HttpResponse(pdf, content_type='application/pdf')
+            file_name = f"{os.getenv('MY_NAME')}_{job_application.company_name}_cv.pdf"
+            response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+
+        return response

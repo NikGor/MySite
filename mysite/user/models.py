@@ -15,3 +15,4 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     website = models.CharField(max_length=200, null=True, blank=True)
     about_me = RichTextField(blank=True, null=True)
+    cover_letter_sample = models.TextField(blank=True, null=True)

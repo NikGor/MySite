@@ -5,11 +5,21 @@
   <!-- Подключение минифицированной CSS Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<style>
+  #loading-spinner {
+    display: none;
+  }
+</style>
 <body>
-  <div class="container">
-    <h1 class="mt-5">URL Parser</h1>
-    <!-- Использование Bootstrap кнопки -->
-    <button id="parse-btn" class="btn btn-primary mt-3">Parse Current Page</button>
+  <div class="container" style="min-width: 400px; min-height: 300px;">
+    <h1 class="mt-5">Vacancy Parser</h1>
+    <div id="loading-spinner" class="spinner-border text-primary m-2" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <button id="parse-btn" class="btn btn-primary m-2">Parse Current Page</button>
+    <button id="text-parse-btn" class="btn btn-secondary m-2">Parse Selected Text</button>
+    <button id="create-cover-btn" class="btn btn-success m-2">Create Cover Letter</button>
+    <button id="adapt-cv-btn" class="btn btn-success m-2">Adapt CV</button>
   </div>
 
   <script src="popup.js"></script>

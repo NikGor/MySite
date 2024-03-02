@@ -39,6 +39,7 @@ AUTH_USER_MODEL = 'user.User'
 
 INSTALLED_APPS = [
     "mysite.user",
+    'corsheaders',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'drf_yasg',
     'rest_framework',
-    'corsheaders',
     'modeltranslation',
     "mysite",
     "mysite.experience",
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -70,7 +71,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -163,3 +163,5 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
+
+CORS_ALLOW_ALL_ORIGINS = True

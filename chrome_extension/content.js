@@ -1,22 +1,11 @@
-// content.js
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.message === "parse_url") {
-    // Получаем URL текущей вкладки
     const pageUrl = window.location.href;
+    const apiUrl = `https://nikogordienko.up.railway.app/api/parse_url/?url=${encodeURIComponent(pageUrl)}`;
 
-    // Здесь ваш API endpoint
-    const apiUrl = `http://127.0.0.1:8000/api/parse_url/?url=${encodeURIComponent(pageUrl)}`;
-
-    // Отправляем запрос к вашему API
     fetch(apiUrl)
-      .then(response => {
-        if (response.ok) {
-          return response.json(); // или response.text() если ожидается не JSON
-        }
-        throw new Error('Ошибка запроса к API');
-      })
+      .then(response => response.json())
       .then(data => {
-        // Тут обработка полученных данных
         console.log(data);
         sendResponse({ data: data });
       })
@@ -24,8 +13,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         console.error('Ошибка:', error);
         sendResponse({ error: error.message });
       });
-  }
 
-  // Важно: вернуть true, чтобы указать, что ответ будет асинхронным
-  return true;
+    return true; // Для асинхронного ответа
+  }
 });

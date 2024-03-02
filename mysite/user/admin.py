@@ -13,7 +13,7 @@ class UserAdmin(BaseUserAdmin):
         ('Personal info', {'fields': (
             'first_name', 'last_name', 'birth_date', 'job_title', 'location', 'is_relocatable', 'linkedin',
             'phone_number',
-            'website', 'about_me', 'job_title_de', 'about_me_de')}),
+            'website', 'about_me', 'cover_letter_sample', 'job_title_de', 'about_me_de')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
